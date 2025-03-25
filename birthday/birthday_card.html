@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li>
+                    <ul class="nav-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="firework2.html">烟火</a></li>
+                        <li><a href="second.html">主页</a></li>
+                        <li><a href="birthday.html">娱乐</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <h1>Happy Birthday!</h1>
+    <div id="message">愿你的生日如璀璨星辰般闪耀，幸福永远与你相伴！</div>
+    <img id="image" src="https://p9-flow-imagex-sign.byteimg.com/ocean-cloud-tos/image_generation/6a30c75a0b0b77cb595a1b3362796d3b_1741678103707880520.png~tplv-a9rns2rl98-image.png?rk3s=25bff839&x-expires=1773214103&x-signature=5jO6t3cI6T8Ksk9oeiKTkDnP%2BOY%3D" alt="Birthday Image">
+    <audio id="birthdayMusic" src="music/M8000044Nr9A4ZiFFQ.mp3" loop></audio>
+
+
+    <button id="musicToggle" class="music-btn">
+  <svg class="music-icon" viewBox="0 0 24 24">
+    <path id="play-icon" d="M8 5v14l11-7z" />
+    <path id="pause-icon" d="M6 4h4v16H6zm8 0h4v16h-4z" 
+          style="display: none;"/>
+  </svg>
+</button>
+
+<style>
+.music-icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  transition: transform 0.2s;
+}
+
+.music-btn:hover .music-icon {
+  transform: scale(1.1);
+}
+</style>
+
+<script>
+// 在updateButtonState函数中替换为：
+function updateButtonState() {
+  const playIcon = document.getElementById('play-icon');
+  const pauseIcon = document.getElementById('pause-icon');
+  
+  if (audio.paused) {
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+  } else {
+    playIcon.style.display = 'none';
+    pauseIcon.style.display = 'block';
+  }
+}
+</script>
+    <script src="js/scrip2.js"></script>
+</body>
+
+</html>
+    

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container { max-width: 600px; margin: 50px auto; padding: 20px; }
+    .mode-select button { margin: 10px; padding: 15px 30px; }
+    .question-box { display: none; border: 1px solid #ccc; padding: 20px; }
+    #counter { color: #666; font-size: 0.9em; }
+    .replay { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 模式选择 -->
+    <div class="mode-select" id="modeSelect">
+      <button onclick="startGame('normal')">普通模式</button>
+      <button onclick="startGame('hard')">困难模式</button>
+    </div>
+
+    <!-- 问题容器 -->
+    <div class="question-box" id="questionBox">
+      <p id="questionText"></p>
+      <div id="buttonGroup">
+        <!-- 按钮由JS动态生成 -->
+      </div>
+      <p id="counter">剩余问题数: <span id="count">5</span></p>
+      <p id="replayText" class="replay" style="display: none;"></p>
+    </div>
+  </div>
+
+  <script>
+    let currentMode = '';
+    let questionCount = 5;
+    const hardModeQuestions = [
+      "你确定要继续挑战吗？",
+      "这个选择可能导致严重后果，是否确认？",
+      "最后一次确认机会，是否坚持？",
+      "系统检测到高风险，真的要继续吗？",
+      "最终确认：是否接受所有后果？"
+    ];
+
+    function startGame(mode) {
+      currentMode = mode;
+      document.getElementById('modeSelect').style.display = 'none';
+      document.getElementById('questionBox').style.display = 'block';
+      
+      if(mode === 'hard') {
+        initHardMode();
+      } else {
+        // 普通模式逻辑（可根据需求补充）
+        alert('普通模式功能开发中');
+      }
+    }
+
+    function initHardMode() {
+      const btnGroup = document.getElementById('buttonGroup');
+      btnGroup.innerHTML = `
+        <button onclick="handleAnswer(true)">是</button>
+        <button onclick="handleAnswer(false)">否</button>
+      `;
+      updateQuestion();
+    }
+
+    function updateQuestion() {
+      const index = 5 - questionCount;
+      document.getElementById('questionText').textContent = hardModeQuestions[index];
+      document.getElementById('count').textContent = questionCount;
+    }
+
+    function handleAnswer(answer) {
+      if(answer) {
+        questionCount--;
+        if(questionCount > 0) {
+          updateQuestion();
+        } else {
+          endGame(true);
+        }
+      } else {
+        document.getElementById('replayText').style.display = 'block';
+        document.getElementById('replayText').textContent = 
+          `你选择了放弃，确定要错过${['隐藏奖励','终极真相','秘密档案'][Math.floor(Math.random()*3)]}吗？`;
+        questionCount = 5; // 重置计数器
+        setTimeout(() => location.reload(), 3000); // 3秒后刷新
+      }
+    }
+
+    function endGame(success) {
+      document.getElementById('buttonGroup').innerHTML = 
+        success ? '🎉 恭喜完成所有挑战！' : '❌ 挑战失败';
+      document.getElementById('counter').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

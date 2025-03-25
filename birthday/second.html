@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="second-page">
+    <!-- 新增导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li>
+                    <ul class="nav-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="birthday_card.html">蛋糕</a></li>
+                        <li><a href="firework2.html">烟火</a></li>
+                        <li><a href="birthday.html">禁止点击</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="welcome-container">
+        <h1>欢迎，<span id="nicknameDisplay"></span>！</h1>
+        <p>要快乐呀</p>
+    </div>
+    <script src="js/script.js"></script>
+     <!-- 带备用控制的播放器 -->
+<audio loop id="bgMusic" style="position: fixed; top:10px; left:10px; width:200px">
+    <source src="music/3053989068.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// 尝试自动播放，失败时显示控制条
+window.onload = function() {
+    const audio = document.getElementById('music/3053989068.mp3');
+    audio.volume = 0.5; // 设置音量（0-1）
+    const promise = audio.play();
+    
+    if (promise !== undefined) {
+        promise.catch(() => {
+            audio.controls = true; // 显示控制条
+        });
+    }
+}
+</script>
+</body>
+</html>

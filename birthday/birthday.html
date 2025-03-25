@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>⚠️警告！严重系统错误⚠️</title>
+    <style>
+        body {
+            background: #000;
+            color: #ff0000;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            overflow: hidden;
+            cursor: not-allowed;
+        }
+
+        .warning {
+            font-size: 5em;
+            text-align: center;
+            margin-top: 20%;
+            text-shadow: 0 0 10px #ff0000;
+            animation: blink 0.5s infinite;
+        }
+
+        .scan-box {
+            border: 3px solid #ff0000;
+            padding: 20px;
+            width: 60%;
+            margin: 50px auto;
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        #progress {
+            width: 0%;
+            height: 30px;
+            background: #ff0000;
+            transition: width 0.5s;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #virus-count {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 2em;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .emoji {
+            font-size: 3em;
+            position: absolute;
+            animation: float 3s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-logo {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li>
+                    <ul class="nav-links">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="second.html">主页</a></li>
+                        <li><a href="firework2.html">烟火</a></li>
+                        <li><a href="birthday_card.html">蛋糕</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <h1 class="warning">⚠️ 病毒入侵警告！⚠️</h1>
+    
+    <div class="scan-box">
+        <h2>正在扫描您的系统...</h2>
+        <div id="progress"></div>
+        <p id="status">检测到：C:/Windows/System32/已被感染</p>
+        <button onclick="startFix()" style="font-size: 2em; padding: 10px 20px;">立即修复！</button>
+    </div>
+
+    <div id="virus-count">已检测病毒：<span id="count">127</span>个</div>
+
+    <script>
+        // 自动滚动病毒数量
+        setInterval(() => {
+            document.getElementById('count').innerText = 
+                Math.floor(Math.random() * 1000 + 500);
+        }, 100);
+
+        // 假装修复系统
+        function startFix() {
+            let progress = 0;
+            const bar = document.getElementById('progress');
+            const timer = setInterval(() => {
+                progress += Math.random() * 10;
+                bar.style.width = progress + '%';
+                
+                if(progress >= 100) {
+                    clearInterval(timer);
+                    document.body.innerHTML = `
+                        <div style="text-align: center; margin-top: 20%">
+                            <h1 style="font-size: 4em">🎉 修复成功！🎉</h1>
+                            <p style="font-size: 2em">您的电脑已安全（骗你的）</p>
+                            <img src="https://i.kym-cdn.com/photos/images/newsfeed/002/205/307/2dc.gif" 
+                                 style="width: 300px; margin-top: 20px">
+                        </div>
+                    `;
+                }
+            }, 200);
+        }
+
+        // 随机生成警告表情
+        setInterval(() => {
+            const emojis = ['⚠️', '❌', '❗', '🔞', '💀'];
+            const emoji = document.createElement('div');
+            emoji.className = 'emoji';
+            emoji.style.left = Math.random() * 90 + '%';
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            document.body.appendChild(emoji);
+            
+            setTimeout(() => emoji.remove(), 3000);
+        }, 500);
+    </script>
+</body>
+</html>

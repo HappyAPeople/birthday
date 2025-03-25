@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+    <div class="login-box">
+        <h2>用户登录</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="text" id="nickname" placeholder="请输入昵称">
+            </div>
+            <button type="submit">登录</button>
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+    <audio id="bgMusic" loop>
+    <source src="music/M800001efYKO2wntvz.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // 用户首次点击页面后播放
+    document.addEventListener('click', () => {
+      const audio = document.getElementById('bgMusic');
+      audio.play();
+    }, { once: true }); // 仅触发一次
+  </script>
+</body>
+</html>
